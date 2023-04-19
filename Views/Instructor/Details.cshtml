@@ -1,0 +1,15 @@
+﻿@model Instructor
+<h1>Instructor Details <h2>
+    <br/>
+<div class="card-group col-4" style="width: 18rem;">
+    <img src="~/images/@Model.img" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Name: @Model.name</h5>
+        <h5 class="card-title">Adress: @Model.address</h5>
+        <p class="card-text"> Salary: @Model.salary</p>
+        <h5 class="card-title">Department: @Model.Department.name</h5>
+        <h5 class="card-title">Course: @Model.Course.name</h5>
+        <button class="btn btn-info"><a href="/Instructor/Index" style="text-decoration:none"> Back</a></button>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@model List<Course>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_CourceLayout";
+
+}
+
+
+    <button type="button" class="btn btn-primary"><a href="/Course/AddNew" style="text-decoration:none;color: white">Create New</a></button>
+    <br />
+    <br />
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            
+            <td>Name</td>
+            <td>Degree</td>
+            <td>Minmum Degree </td>
+            <td>Dept Name</td>
+            <td>Actions</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                               
+                <td>@item.name</td>
+                <td>@item.degree</td>
+                <td>@item.mindegree</td>
+                <td>@item.Department.name</td>
+                <td>
+                   <button type="button" class="btn btn-info me-xl-2"><a href="/Course/Details/@item.id" style="text-decoration:none;color: white ">Details</a></button>
+               
+                    <button type="button" class="btn btn-success me-xl-2"><a href="/Course/Edit/@item.id" style="text-decoration:none ;color: white">Edit</a></button>
+                    <button type="button" class="btn btn-danger"> <a href="/Course/Delete/@item.id" style="text-decoration:none ;color: white" onclick="return confirm('Are you sure to delete?')">Delete</a></button>
+                     
+                </td>
+
+            </tr>
+        }
+    </table>
+
+
+
+
+
+
+

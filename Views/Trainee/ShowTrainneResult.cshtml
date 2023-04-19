@@ -1,0 +1,18 @@
+﻿@model List<MVC.ViweModels.CrsResultVM>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Course Name</th>
+        <th>Degree</th>
+    </tr>
+    @foreach (MVC.ViweModels.CrsResultVM item in Model)
+    {
+        <tr>
+            <td><div style="color:@item.Color">@item.name</div></td>
+            <td><div style="color:@item.Color">@item.crs</div></td>
+            <td> <div style="color:@item.Color">@item.degree</div></td>
+
+        </tr>
+    }
+</table>

@@ -1,0 +1,10 @@
+﻿@model CrsResult
+
+
+<div class="card">
+    <div class="card-header">@Model.Trainee.name</div>    
+    <div class="card-body"><img src="~/Images/@Model.Trainee.img" style="width:100px" /></div>
+    <div class="card-header">@Model.Course.name</div>
+    <div style="color:@ViewBag.color" class="card-footer">@Model.degree</div>
+</div>
+

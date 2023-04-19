@@ -1,0 +1,43 @@
+﻿@model List<Trainee>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Trainees</h1>
+ <button type="button" class="btn btn-primary"><a href="/Trainee/Add" style="text-decoration:none;color: white">Create New</a></button>
+    <br />
+    <br />
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            
+            <td>Name</td>
+            <td>Imge</td>
+            <td>Adress </td>
+            <td>Grade</td>
+            <td>Department</td>
+            <td>Actions</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                               
+                <td>@item.name</td>
+                <td><img src="~/images/@item.img" class="card-img-top" alt="..." style="width:150px; hight:150px"></td>
+                <td>@item.address</td>
+                <td>@item.grade</td>
+                <td>@item.Department.name</td>
+                <td>
+                    <button type="button" class="btn btn-info me-xl-2"><a href="/Trainee/Details/@item.id" style="text-decoration:none;color: white ">Details</a></button>
+                    <button type="button" class="btn btn-success me-xl-2"><a href="/Trainee/Edit/@item.id" style="text-decoration:none ;color: white">Edit</a></button>
+                    <button type="button" class="btn btn-danger"> <a href="/Trainee/Delete/@item.id" style="text-decoration:none ;color: white" onclick="return confirm('Are you sure to delete?')">Delete</a></button>
+                     
+                </td>
+
+            </tr>
+        }
+    </table>
+
+
+
+

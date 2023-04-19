@@ -1,0 +1,65 @@
+﻿@model MVC.ViweModels.InstructorVM
+<h1>Edit</h1>
+
+<form method="post" action="/Instructor/Edit/@Model?.Id">
+    <div>
+        <label>Name</label>
+        <input type="text" name="name" id="Name" value="@Model?.Name" class="form-control" />
+    </div>
+    
+    <div>
+        <label>Image</label>
+        <input type="file" name="Img" id="Img" value="@Model?.Img" class="form-control" />
+    </div>
+    <div>
+        <label>Address</label>
+        <input type="text" name="address" id="Address" value="@Model?.Address" class="form-control" />
+    </div>
+    <div>
+        <label>Salary</label>
+        <input type="number" name="salary" id="Salary" value="@Model?.Salary" class="form-control" />
+    </div>
+    <div>
+        <label>Departments</label>        
+        <select name="Dept_ID" id="Dept_ID" class="form-control">
+            @foreach (Department itemDept in Model.Departments)
+            {
+                @if (Model.Dept_ID == itemDept.id)
+                {
+                    <option value="@itemDept.id" selected>@itemDept.name</option>
+                }
+                else
+                {
+                    <option value="@itemDept.id">@itemDept.name</option>
+                }
+            }
+        </select>
+    </div>
+    <div>
+    <label>Cources</label>        
+        <select name="Course_ID" id="Course_ID" class="form-control">
+            @foreach (Course itemCour in Model.Courses)
+            {
+                @if (Model.Course_ID == itemCour.id)
+                {
+                    <option value="@itemCour.id" selected>@itemCour.name</option>
+                }
+                else
+                {
+                    <option value="@itemCour.id">@itemCour.name</option>
+                }
+            }
+        </select>
+    </div>
+    <br />
+    <br />
+    <input type="submit" value="Edit" class="btn btn-primary" />
+    <br />
+</form>
+<br />
+<br />
+
+
+<button type="button" class="btn btn-primary"><a href="/Instructor/Index" style="text-decoration:none;color: black">Back To List</a></button>
+
+

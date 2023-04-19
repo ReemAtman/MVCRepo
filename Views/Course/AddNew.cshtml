@@ -1,0 +1,49 @@
+﻿@model MVC.ViweModels.CourseVM
+@{
+    ViewData["Title"] = "New";
+    Layout = "_CourceLayout";
+    SelectList depts = new SelectList(Model.Departments, "id", "name");
+}
+
+<h1>New Course</h1>
+<form method="post" asp-action="Add" asp-controller="Course">
+   
+    <div>
+        <label asp-for="name"></label>
+        <input asp-for="name" class="form-control" />
+        <span asp-validation-for="name" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="degree"></label>
+        <input asp-for="degree" class="form-control" />
+        <span asp-validation-for="degree" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="mindegree"></label>
+        <input asp-for="mindegree" class="form-control" />
+        <span asp-validation-for="mindegree" class="text-danger"></span>
+    </div>  
+    
+    <div>
+        <label asp-for="Dept_ID"></label>       
+        <select class="form-control" asp-for="Dept_ID" asp-items="depts">
+            <option value="0">Select Department</option>
+        </select>
+        <span asp-validation-for="Dept_ID" class="text-danger"></span>
+    </div>
+    <br />
+    <br />
+    <input type="submit" value="Create" class="btn btn-success" />
+    
+
+</form>
+<br />
+<button type="button" class="btn btn-primary"><a asp-action="Index" asp-controller="Course" style="text-decoration:none;color: white">Back To List</a></button>
+
+@section Scripts{
+
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}

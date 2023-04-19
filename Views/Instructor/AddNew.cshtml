@@ -1,0 +1,78 @@
+﻿@model MVC.ViweModels.InstructorVM
+
+<h1>Add New</h1>
+
+<form method="post" action="/Instructor/Add">
+    <div>
+        <label>Image</label>
+        <input type="file" name="img" id="Name" value="@Model?.Img" class="form-control" />
+    </div>
+    <div>
+        <label> Name</label>
+        <input type="text" name="name" id="ManagerName" value="@Model?.Name" class="form-control" />
+    </div>
+    <div>
+        <label>Adress</label>
+        <input type="text" name="address" id="Name" value="@Model?.Address" class="form-control" />
+    </div>
+    <div>
+        <label>Salary</label>
+        <input type="text" name="salary" id="ManagerName" value="@Model?.Salary" class="form-control" />
+    </div>
+
+    <div>
+        <label>Deparment</label>
+        <select name="Dept_ID" id="Dept_ID" class="form-control" onchange="GetCourses()">
+            @foreach (Department itemDept in Model.Departments)
+            {
+               <option value="@itemDept.id">@itemDept.name</option>
+                               
+            }
+        </select>
+    </div>
+    <br />
+    <div>
+        <label>Course</label>
+        <select name="Course_ID" id="CourseSelect" class="form-control">
+            
+        </select>
+    </div>
+    <br />
+    <br />
+
+    <input type="submit" value="Create" class="btn btn-primary"  />
+</form>
+
+@section Scripts{
+    <script src="/lib/jquery/dist/jquery.min.js">
+    </script>
+
+    <script>
+
+        function GetCourses() {
+            var deptID = $("#Dept_ID").val();
+            console.log(deptID);
+
+            $("#CourseSelect").html("");
+
+            $.ajax({
+                url: "/Course/GetCourseByDept",
+
+                data: { "deptID": deptID },
+                success: function (result) {
+                   
+                    console.log(result);
+                    for (let item of result) {
+                        $("#CourseSelect").append("<option value=" + item.id + ">" + item.name + "</option>")
+                    }
+                    
+                }
+            });
+        }
+       
+    </script>
+}
+
+
+
+

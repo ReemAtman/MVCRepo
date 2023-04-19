@@ -1,0 +1,86 @@
+﻿@model List<Department>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Departments</h1>
+<button type="button" class="btn btn-primary"><a href="/Course/AddNew" style="text-decoration:none;color: white">Create New</a></button>
+<br />
+<br />
+<!-- Button trigger modal -->
+@*<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>*@
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Department</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modelBody">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        @*<button type="button" class="btn btn-primary" onclick="SaveUpdate">Save changes</button>*@
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-bordered table-hover">
+    <tr>
+
+        <td>Name</td>
+        <td>Manager</td>
+        <td>Actions</td>
+        
+    </tr>
+    
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>@item.name</td>
+            <td>@item.manager</td>
+            
+            <td>
+                <button type="button" class="btn btn-info me-xl-2"><a href="/Department/Details/@item.id" style="text-decoration:none;color: white ">Details</a></button>
+
+                <button type="button" class="btn btn-success me-xl-2" onclick="Edit(@item.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                <button type="button" class="btn btn-danger"> <a href="/Department/Delete/@item.id" style="text-decoration:none ;color: white" onclick="return confirm('Are you sure to delete?')">Delete</a></button>
+
+            </td>
+
+        </tr>
+    }
+</table>
+
+@section Scripts{
+    <script src="/lib/jquery/dist/jquery.min.js">
+    </script>
+    <script>
+        function Edit(id) {
+           
+            console.log(id);
+            $("#modelBody").html("");
+           
+            $.ajax({
+                method: "Get",
+                url: "/Department/Edit",               
+                data: { "id": id },
+                
+                success: function (result) {
+                    
+                    console.log(result);
+                    $("#modelBody").html(result);
+                    
+                }
+            });
+        }
+    </script>
+}
+

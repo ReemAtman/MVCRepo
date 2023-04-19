@@ -1,0 +1,14 @@
+﻿@model Course
+<h1>Course Details <h2>
+<div class="card-group col-4" style="width: 18rem;">
+   
+    <div class="card-body">
+       
+        <h5 class="card-title">Name: @Model.name</h5>
+        <h5 class="card-title">Degree: @Model.degree</h5>
+        <h5 class="card-title"> Minmum Degree: @Model.mindegree</h5>
+        <h5 class="card-text">Department Name: @Model.Department.name</h5>
+        <button class="btn btn-info"><a href="/Course/Index" style="text-decoration:none"> Back</a></button>
+    </div>
+    </div>
+</div>
